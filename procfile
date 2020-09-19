@@ -1,0 +1,1 @@
+web:gunicorn WebCnn1.wgsi
