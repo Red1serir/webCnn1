@@ -26,7 +26,7 @@ SECRET_KEY = 'e32&qnb92slpf@v6ng$iu+=jv9z(+ho___d5&78^1b@ja+4+xe'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','pixelgramserver.herokuapp.com']
 
 
 # Application definition
