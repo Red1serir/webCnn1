@@ -1,0 +1,120 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pixel's</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen" />
+
+    <link rel="stylesheet" href="{% static 'css/demo.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}" media="screen" />
+
+    <script type="text/javascript" src="{% static 'js/modernizr.custom.86080.js' %}"></script>
+  </head>
+
+  <body>
+    <div id="particles-js"></div>
+
+    <ul class="cb-slideshow">
+      <li>
+      </li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <div class="container-fluid">
+      <div class="row cb-slideshow-text-container">
+        <div class="tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section">
+          <header class="mb-5"><h1>PixelGramm</h1></header>
+          <p class="mb-5">
+
+            Bienvenue dans notre site , en un seul clique embellissez et rendez de meilleure qualité vos photos de visage,
+            il suffit juste de choisir une photo et le traitement et l'affichage du résultat se fera automatiquement
+          </p>
+    </div>
+	  </div>
+<div class="container-fluid">
+      <div class="row cb-slideshow-text-container" >
+        <div class="tm-content col-xl-8 col-sm-8 col-xs-8 ml-auto section" style=" margin-right: 80px">
+
+          <div style="display:flex;justify-content:space-around">
+
+            {% if url_image %}
+              <img id="image_org" src="{{ url_image }}" width="256" height="256" >
+            {% else %}
+
+             {% load static %}
+            <img id="image_org" src="{% static 'img/img.jpg' %}"alt="" width="256" height="256" >
+            {% endif %}
+            <img id="image_org2" src="{{ url_image_generated }}" width="256" height="256">
+
+              <form  class="md-form" action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                  <div class="file-field">
+                      <div class="btn blue-gradient btn-sm float-left">
+                          <span><i class="fas fa-cloud-upload-alt mr-2" aria-hidden="true" ></i>Choose files</span>
+                          <input id="upload_img" type="file" name="image" >
+                          <input id="send" type="submit" class="btn btn-primary" style="display: none;">
+                      </div>
+                  </div>
+              </form>
+          </div>
+
+
+        </div>
+	  </div>
+	 <!-- <ul class="cb-slideshow">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	  </ul>
+
+	  <div class="container-fluid">
+		<div class="row cb-slideshow-text-container">
+
+		</div>
+    </div> -->
+
+        </div>
+        </div>
+
+
+  </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><!-- Bootstrap tooltips -->
+
+  <script>
+
+    function readURL() {
+        var $input = $(this);
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image_org').attr('src', e.target.result).show();
+                $('#send').click()
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+    }
+
+    $("#upload_img").change(readURL);
+
+  </script>
+  <script type="text/javascript" src="{% static 'js/particles.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+</html>
