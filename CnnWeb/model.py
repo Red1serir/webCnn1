@@ -6,11 +6,11 @@ import numpy as np
 from PIL import Image
 
 
-from tensorflow.keras.layers import Input, Dense, Conv2D, MaxPooling2D, Dropout
-from tensorflow.keras.layers import Conv2DTranspose, UpSampling2D, add
-from tensorflow.keras.models import Model
-from tensorflow.keras import regularizers
-import tensorflow as tf
+from keras.layers import Input, Dense, Conv2D, MaxPooling2D, Dropout
+from keras.layers import Conv2DTranspose, UpSampling2D, add
+from keras.models import Model
+from keras import regularizers
+import keras as k
 
 
 def model():
@@ -34,7 +34,7 @@ def model():
     autoencoder=Model(input_img,decoder)
     #autoencoder.summary();
 
-    opt = tf.keras.optimizers.Adam()
+    opt = k.optimizers.Adam()
 
     autoencoder.compile(optimizer=opt,loss='mean_squared_error',metrics=['accuracy'])
     autoencoder.load_weights('static/weights/weights.h5')
